@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Loader from 'react-loaders'
+import { Link } from 'react-router'
+import Loader from '../Loader'
 import AnimatedLetters from '../AnimatedLetters'
 import Logo from './Logo'
 import './index.scss'
@@ -54,7 +54,7 @@ const Home = () => {
             />
           </h1>
           <h2>
-            Software Developer · Web &amp; Mobile
+            React · .NET · Swift · Based in Chicago
           </h2>
           <Link to="/contact" className="flat-button">
             CONTACT ME
@@ -63,7 +63,7 @@ const Home = () => {
         <Logo />
       </div>
       
-      <Loader type="pacman" />
+      <Loader />
     </>
   )
 }

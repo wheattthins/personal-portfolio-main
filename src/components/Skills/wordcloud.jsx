@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import TagCloud from 'TagCloud'
 
 const WordCloud = () => {
-  const [isLoading, setLoad] = useState(true)
+  const containerRef = useRef(null)
 
-  const container = '.content'
   // Skills matching current resume
   const texts = [
     'JavaScript',
@@ -26,7 +25,8 @@ const WordCloud = () => {
     'Xcode',
   ]
   const options = {
-    radius: 300,
+    // shrink the sphere on narrow screens so it fits the viewport
+    radius: Math.min(300, Math.floor((window.innerWidth - 60) / 2)),
     // animation speed
     // slow, normal, fast
     maxSpeed: 'fast',
@@ -38,19 +38,15 @@ const WordCloud = () => {
     // interact with cursor move on mouse out
     keep: true,
   }
-  //   to render wordcloud each time the page is reloaded
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (isLoading) {
-      TagCloud(container, texts, options)
-      console.log('i fire once')
-      setLoad(false)
-    }
-  })
+    const cloud = TagCloud(containerRef.current, texts, options)
+    return () => cloud.destroy()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="main">
-      <span className="content"></span>
+      <span className="content" ref={containerRef}></span>
     </div>
   )
 }

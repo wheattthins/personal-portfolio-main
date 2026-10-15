@@ -4,11 +4,11 @@ import {
   faCss3,
   faGitAlt,
   faHtml5,
-  faJsSquare,
+  faSquareJs,
   faReact,
   faSwift,
 } from '@fortawesome/free-brands-svg-icons'
-import Loader from 'react-loaders'
+import Loader from '../Loader'
 import AnimatedLetters from '../AnimatedLetters'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './index.scss'
@@ -77,7 +77,7 @@ const About = () => {
               <FontAwesomeIcon icon={faReact} color="#5ED4F4" />
             </div>
             <div className="face5">
-              <FontAwesomeIcon icon={faJsSquare} color="#EFD81D" />
+              <FontAwesomeIcon icon={faSquareJs} color="#EFD81D" />
             </div>
             <div className="face6">
               <FontAwesomeIcon icon={faGitAlt} color="#EC4D28" />
@@ -85,7 +85,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Loader type="pacman" />
+      <Loader />
     </>
   )
 }
