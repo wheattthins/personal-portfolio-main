@@ -1,11 +1,8 @@
 $primary-color: hsl(54, 100%, 50%);
 
-@import 'animate.css';
-@import '~loaders.css/src/animations/pacman.scss';
-
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
+  src: url('./assets/fonts/helvetica-neu.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -47,4 +44,17 @@ textarea {
   height: 50px;
   animation: fadeOut 1s 1s;
   animation-fill-mode: forwards;
+}
+
+// loaders.css draws Pac-Man white; recolor his body (the two border halves)
+.loader .pacman > div:first-of-type,
+.loader .pacman > div:nth-child(2) {
+  border-top-color: #ffd700;
+  border-left-color: #ffd700;
+  border-bottom-color: #ffd700;
+}
+
+// ...and the dots he eats
+.loader .pacman > div:nth-child(n + 3) {
+  background-color: #ffd700;
 }

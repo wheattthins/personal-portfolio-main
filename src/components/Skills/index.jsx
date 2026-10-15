@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Loader from 'react-loaders'
+import Loader from '../Loader'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 import WordCloud from './wordcloud'
@@ -44,7 +44,7 @@ const Skills = () => {
         </div>
       </div>
 
-      <Loader type="pacman" />
+      <Loader />
     </>
   )
 }

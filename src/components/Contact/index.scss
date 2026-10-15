@@ -69,24 +69,24 @@
     min-height: 150px;
   }
 
+  // matches the Home page's CONTACT ME button
   .flat-button {
-    color: #ff4500;
-    font-size: 11px;
-    letter-spacing: 3px;
+    color: #00ff7f;
+    font-size: 13px;
+    font-family: sans-serif;
+    letter-spacing: 4px;
     text-decoration: none;
-    padding: 8px 10px;
-    border: 1px solid #ff4500;
-    float: left;
-    border-radius: 4px;
+    padding: 12px 28px;
+    border: 1px solid #00ff7f;
+    border-radius: 0.5rem;
     background: 0 0;
     text-transform: uppercase;
     float: right;
     text-align: center;
-    margin-right: 10px;
 
     &:hover {
       cursor: pointer;
-      background-color: #ff4500;
+      background-color: #00ff7f;
       color: #000;
     }
   }
@@ -132,5 +132,30 @@
     span {
       color: #ffd700;
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-form ul li.half {
+    width: 100%;
+    margin-left: 0;
+    float: none;
+  }
+
+  .info-map {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    margin: 30px 24px 0;
+    font-size: 15px;
+    word-break: break-word;
+  }
+
+  .map-wrap {
+    float: none;
+    width: auto;
+    height: 300px;
+    margin: 20px 24px 0;
   }
 }

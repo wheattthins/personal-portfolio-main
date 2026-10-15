@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react'
-import Loader from 'react-loaders'
+import { useEffect, useRef, useState } from 'react'
+import Loader from '../Loader'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
+const EMAILJS_PUBLIC_KEY = 'TfWZZy8TBxbMngZTU'
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
@@ -15,16 +14,11 @@ const Contact = () => {
   const contactArray = 'Contact Me'.split('')
 
   useEffect(() => {
-    // Initialize EmailJS with your Public Key
-    try {
-      emailjs.init('TfWZZy8TBxbMngZTU')
-      console.log('EmailJS initialized successfully')
-    } catch (error) {
-      console.error('EmailJS initialization error:', error)
-    }
-    return setTimeout(() => {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
+    const timer = setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, 3000)
+    return () => clearTimeout(timer)
   }, [])
 
   const sendEmail = (e) => {
@@ -41,7 +35,7 @@ const Contact = () => {
     }
 
     emailjs
-      .sendForm('service_1x7wiqc', 'template_e2ecpa5', form.current, 'TfWZZy8TBxbMngZTU')
+      .sendForm('service_1x7wiqc', 'template_e2ecpa5', form.current, { publicKey: EMAILJS_PUBLIC_KEY })
       .then((result) => {
         console.log('Email sent successfully:', result.text);
         // Reset form
@@ -170,7 +164,7 @@ const Contact = () => {
           </MapContainer>
         </div>
       </div>
-      <Loader type="pacman" />
+      <Loader />
     </>
   )
 }

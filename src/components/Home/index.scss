@@ -80,3 +80,38 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .home-page {
+    .text-zone {
+      position: relative;
+      left: 0;
+      top: 0;
+      transform: none;
+      width: auto;
+      max-height: none;
+      padding: 0 24px;
+
+      h1 {
+        font-size: 40px;
+        line-height: 48px;
+        // room for the absolutely-positioned <h1/> tag so it doesn't overlap the h2
+        padding-bottom: 28px;
+
+        &:before {
+          left: 10px;
+          margin-top: -30px;
+        }
+      }
+    }
+
+    h2 {
+      line-height: 1.6;
+    }
+
+    .flat-button {
+      float: none;
+      display: inline-block;
+    }
+  }
+}

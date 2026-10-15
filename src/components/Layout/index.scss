@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:string";
+
 .page {
   width: 100%;
   height: 100%;
@@ -115,13 +118,33 @@
   }
 }
 
+// shorter laptop screens: tighten the text so long pages (About) don't run
+// into the </body> tag at the bottom
+@media (min-width: 901px) and (max-height: 820px) {
+  .container.contact-page,
+  .container.about-page,
+  .container.skills-page {
+    .text-zone {
+      h1 {
+        font-size: 46px;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 15px;
+        margin: 0 0 12px;
+      }
+    }
+  }
+}
+
 // n is number of stars required
 @function multiple-box-shadow($n) {
-  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  $value: '#{math.random(2000)}px #{math.random(2000)}px #FFF';
   @for $i from 2 through $n {
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+    $value: '#{$value} , #{math.random(2000)}px #{math.random(2000)}px #FFF';
   }
-  @return unquote($value);
+  @return string.unquote($value);
 }
 
 $shadows-small: multiple-box-shadow(1400);
@@ -191,5 +214,69 @@ html {
   }
   to {
     transform: translateY(-2000px);
+  }
+}
+
+@media (max-width: 900px) {
+  html,
+  body {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .page {
+    padding-top: 60px;
+  }
+
+  .top-tags {
+    display: none;
+  }
+
+  .tags {
+    position: fixed;
+    left: 20px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // the fixed </body></html> text overlaps scrolling content on phones;
+  // hide the text but keep the star background that lives inside it
+  .bottom-tags {
+    font-size: 0;
+  }
+
+  .container {
+    position: relative;
+    top: 0;
+    height: auto;
+    min-height: 0;
+    padding: 40px 0 60px;
+  }
+
+  .container.contact-page,
+  .container.about-page,
+  .container.skills-page {
+    .text-zone {
+      position: relative;
+      left: 0;
+      top: 0;
+      transform: none;
+      display: block;
+      width: auto;
+      max-height: none;
+      padding: 0 24px;
+
+      h1 {
+        font-size: 40px;
+        left: 0;
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 1.5;
+      }
+    }
   }
 }

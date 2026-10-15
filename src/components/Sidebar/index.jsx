@@ -7,22 +7,22 @@ import {
   faEnvelope,
   faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 
 const Sidebar = () => {
   return (
     <>
       <div className="nav-bar">     
         <nav>
-          <NavLink exact="true" activeclassname="active" to="/">
+          <NavLink end to="/">
             <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
           </NavLink>
-          <NavLink activeclassname="active" className="about-link" to="/about">
+          <NavLink className="about-link" to="/about">
             <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
           </NavLink>
 
           <NavLink
-            activeclassname="active"
+           
             className="skills-link"
             to="/skills"
           >
@@ -30,7 +30,7 @@ const Sidebar = () => {
           </NavLink>
 
           <NavLink
-            activeclassname="active"
+           
             className="contact-link"
             to="/contact"
           >
